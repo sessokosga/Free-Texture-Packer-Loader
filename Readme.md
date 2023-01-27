@@ -2,6 +2,8 @@
 
 A sprite sheet loader for using [Free Texture Packer](https://free-tex-packer.com) with [Monogame](https://monogame.net)
 
+*Read in another language : [English](Readme.md), [Français](Readme.fr.md)*
+
 ## Structure
 There are four main classes to look at :  
 1. `SpriteFrame` : it represent one image inside of a spritesheet
@@ -25,7 +27,7 @@ Don't forget to add `using FreeTexturePackerLoader;`
         var spritesheetLoader = new SpriteSheetLoader(Content);  
 
 
-2. Create aninstance of the SpriteRenderer
+2. Create an instance of the SpriteRenderer
 
     It's usually done in the `LoadContent` method
         It needs the `spriteBatch`
@@ -46,7 +48,7 @@ Don't forget to add `using FreeTexturePackerLoader;`
 
 ## Example project
 Create a monogame desktop project
-### Using Free Texture Packer to create the spritesheet
+### Using Free Texture Packer to create a spritesheet
 1. Open Free Texture Packer
 2. Add the images in the `Examples/images` folder
 3. Set texture name to `chess`
@@ -101,36 +103,38 @@ Create a monogame desktop project
             }
         }
     
-10. Check `Allow trim` and `Allow rotation boxes`
+10. Check `Allow trim` and `Allow rotation` boxes
 11. For file extension, write `json`
-12. Click save
-13. Click Export
+12. Click `Save`
+13. Click `Export`
 14. Locate the Content directory of your monogame project and click `Select Folder`
 
-It'll generate two files, a json file and an png image
+It'll generate two files: `chess.json` and `chess.png`.  
+The first contains informations about the spritesheet such as the posistion and size all the images inside that spritesheet and the last file is the actual spritesheet.
 
 ### Loading the spritesheet and using it with monogame
 1. Copy the `FreeTexturePackerLoader` folder inside of your monogame project
-2. At this using line at the top of yout Game1.cs file `using FreeTexturePackerLoader;`
-3. Create an instance of the SpriteSheetLoader in the LoadContent method
+2. At this using line at the top of your Game1.cs file `using FreeTexturePackerLoader;`
+3. Create an instance of the SpriteSheetLoader in the `LoadContent` method
 
         var  spriteSheetLoader = new SpriteSheetLoader(Content);
 4. Create aninstance of the SpriteRenderer
 
         private SpriteRender spriteRender;
-    In the LoadContent method, add : 
+    In the `LoadContent` method, add : 
 
         spriteRender = new SpriteRender(_spriteBatch);
 5. Load the spritesheet
 
         private SpriteSheet spriteSheet;
-    In the LoadContent method, add : 
+    In the `LoadContent` method, add : 
 
         spriteSheet = spriteSheetLoader.Load("chess");
 6. Draw a sprite from the spritesheet
-    In the Draw method, add :
+    In the `Draw` method, add :
 
         spriteRender.Draw(spriteSheet.GetSprite("reine_blanc"), new Vector2(100, 100), Color.White);
+    You should see the white queen at the screen
 7. Now try to show all the chess piece at the screen.
 
     You can find the full project in the `Example/ChessBoard Final`
