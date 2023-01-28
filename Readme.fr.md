@@ -16,39 +16,23 @@ Les autres classes stockent des informations concernant une SpriteFrame :
 2. `Rect` stocke la position (X,Y) d'une image à l'intérieur d'une spritesheet et sa taille (Largeur, Hauteur)
 3. `Size` stocke la taille (Largeur, Hauteur) d'une image
 
-## Utilisation
-Ne pas oublier d'ajouter cette ligne `using FreeTexturePackerLoader;`
-
-1. Nous créons une instance du SpriteSheetLoader
-
-    Cela se fait engénéral dans la méthode `LoadContent`  
-    Nous lui passons le `Content`  
-
-        var spritesheetLoader = new SpriteSheetLoader(Content);  
-
-
-2. Nous créons ensuite une instance du SpriteRenderer
-
-    Cela se fait engénéral dans la méthode `LoadContent`  
-    Nous lui passons le `spriteBatch`
-
-        var spriteRenderer = new SpriteRender(spriteBatch);
-
-3. Chargeons la spritesheet
-
-    Toujours dans la méthode `LoadContent` 
-
-        var spritesheet = spriteSheetLoader.Load(filename);
-
-4. Affichons une image du spritesheet
- 
-    Dans l méthode `Draw`:
-
-        spriteRender.Draw(spriteSheet.GetSprite(spritename), new Vector2(100, 100), Color.White);
-
 ## Projet d'Example
 
-Créons un projet Monogame pour desktop 
+### Prérequis
+Vous devez avoir Monogame instalé 
+Pour cet exemple, j'utilise `Monogame 3.8.1.303`  
+Vous devez aussi avoir Free Texture Packer instalé
+Pour cet exemple, j'utilise `Free Texture Packer 0.6.7`  
+
+
+### Installing
+Vous avez deux possibilités de l'installer dans votre projet
+1. Utiliser les sources
+    Copiez simplement le dossier `FreeTexturePackerLoader` dans votre projet monogame
+
+2. L'obtenir par Nuget
+
+        dotnet add package FreeTexturePacker.Lib --version 1.0.0
 
 ### Utiliser Free Texture Packer pour créer une spritesheet
 1. Ouvrez Free Texture Packer
@@ -57,6 +41,7 @@ Créons un projet Monogame pour desktop
 4. Selectionner le format `png`
 5. Cochez la case `Remove file ext`
 6. Pour le packer, utiliser `OptimalPacker`
+7. Décocher la case `Allow trim` 
 7. Choisissez le format `custom`
 8. Cliquez sur le crayon juste à côté
 9. Coller ce template d'export:
@@ -115,7 +100,8 @@ Cela va générer deux fichiers : `chess.json` et `chess.png`.
 Le premier contient des informations concernant la spritesheet telles que la position et la taille des images qui la constituent; le second fichier est la spritesheet.
 
 ### Charger la spritesheet et l'utiliser avec Monogame
-1. Copiez le dossier `FreeTexturePackerLoader` dans votre projet
+1. Créez un projet Monogame pour desktop
+2. Copiez le dossier `FreeTexturePackerLoader` dans votre projet
 2. Tout en haut du ficher Game1.cs, ajoutez `using FreeTexturePackerLoader;`
 3. Créez une instance du SpriteSheetLoader dans la méthode `LoadContent`
 
@@ -141,3 +127,15 @@ Le premier contient des informations concernant la spritesheet telles que la pos
 7. Maintenant, essayez d'afficher toutes les pièces à l'écran
 
     Vous trouverez le projet complet dans le dossier `Example/ChessBoard Final`
+
+## Contribution
+
+Veuillez lire le fichier [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) concernant la conduite à tenir pour contribuer à ce projet.
+
+## Auteurs
+
+* **Sesso Kosga** - *Travail inital* - [senor16](https://github.com/senor16)
+
+## License
+
+Ce projet utilise la licence MIT - voir le fichier [licence.md](licence.md) pour plus de détails
